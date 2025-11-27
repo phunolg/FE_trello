@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, type Dispatch } from "react";
 import type { SortOption, ViewMode } from "./types";
 import type { Board } from "@/shared/lib/types";
 
@@ -9,11 +9,10 @@ export type WorkspaceContextType = {
     boards: Board[]
 };
 
-export type WorkspaceDisplayContextType = {
-    setSearchQuery: (query: string) => void;
-    setSortBy: (option: SortOption) => void;
-    setViewMode: (mode: ViewMode) => void;
-};
+export type WorkspaceDisplayContextType = Dispatch<{
+    type: 'setSearchQuery' | 'setSortBy' | 'setViewMode';
+    payload: string;
+}>;
 
 export const WorkspaceContext = createContext<WorkspaceContextType>({
     searchQuery: '',
@@ -22,8 +21,4 @@ export const WorkspaceContext = createContext<WorkspaceContextType>({
     boards: [],
 })
 
-export const WorkspaceDisplayContext = createContext<WorkspaceDisplayContextType>({
-    setSearchQuery: () => {},
-    setSortBy: () => {},
-    setViewMode: () => {},
-})
+export const WorkspaceDisplayContext = createContext<WorkspaceDisplayContextType>(() => {});

@@ -99,3 +99,5 @@ export function BoardView() {
     </div>
   );
 }
+
+export default BoardView;

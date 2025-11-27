@@ -4,9 +4,9 @@ import { AppLayout } from './features/app/ui/AppLayout';
 import { BlankLayout } from './features/app/ui/BlankLayout';
 
 // Lazy load all pages
-const BoardView = lazy(() => import('./pages/BoardView').then(module => ({ default: module.BoardView })));
-const Profile = lazy(() => import('./pages/Profile').then(module => ({ default: module.Profile })));
-const WorkspacePage = lazy(() => import('./pages/WorkspacePage').then(module => ({ default: module.WorkspacePage })));
+const BoardView = lazy(() => import('./pages/BoardView'));
+const Profile = lazy(() => import('./pages/Profile'));
+const WorkspacePage = lazy(() => import('./pages/WorkspacePage'));
 const LoginPage = lazy(() => import('./pages/auth/LoginPage'));
 const DashBoardPage = lazy(() => import('./pages/dashboard/DashBoardPage'));
 

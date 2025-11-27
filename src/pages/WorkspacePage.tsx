@@ -4,7 +4,7 @@ import { WorkspaceDisplay } from "@/features/workspace/ui/workspace-display";
 import { useBoardStore } from "@/shared/stores/useBoardStore";
 import { useParams } from "react-router";
 import { useState } from "react";
-import { WorkspaceContextProvider } from "@/features/workspace/ui/workspace-context";
+import { WorkspaceProvider } from "@/features/workspace/ui/workspace-context";
 
 export function WorkspacePage() {
     console.log("%cWorkspacePage rendered", "color: purple");
@@ -39,7 +39,7 @@ export function WorkspacePage() {
     }
 
     return (
-        <WorkspaceContextProvider>
+        <WorkspaceProvider>
             <div className="flex-1 space-y-6 p-8 pt-6">
                 {/* Header */}
                 <div className="space-y-2">
@@ -70,6 +70,8 @@ export function WorkspacePage() {
                     workspaceId={workspaceId}
                 />
             </div>
-        </WorkspaceContextProvider>
+        </WorkspaceProvider>
     );
 }
+
+export default WorkspacePage;

@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { WorkspaceDisplayContext } from '../shared/context';
 
 export default function FilterSearchInput() {
-    const { setSearchQuery } = useContext(WorkspaceDisplayContext);
+    const dispatch = useContext(WorkspaceDisplayContext);
 
     console.log("%cFilterSearchInput rendered", "color: blue");
 
@@ -13,7 +13,7 @@ export default function FilterSearchInput() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
                 placeholder="Search boards..."
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => dispatch({ type: 'setSearchQuery', payload: e.target.value })}
                 className="pl-10"
             />
         </div>
