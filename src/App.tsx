@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { AppLayout } from './features/app/ui/AppLayout';
 import { BlankLayout } from './features/app/ui/BlankLayout';
+import { PageLoader } from './shared/ui/page-loader';
 
 // Lazy load all pages
 const BoardView = lazy(() => import('./pages/BoardView'));
@@ -12,8 +13,9 @@ const DashBoardPage = lazy(() => import('./pages/dashboard/DashBoardPage'));
 
 function App() {
   return (
-    <BrowserRouter basename="/my-vue-app/">
-      <Routes>
+    <BrowserRouter basename="/FE_trello/">
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
         <Route path="/auth" element={<BlankLayout />}>
           <Route path="login" element={<LoginPage />} />
         </Route>
@@ -23,8 +25,9 @@ function App() {
           <Route path="board/:boardId" element={<BoardView />} />
           <Route path="profile" element={<Profile />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
